@@ -1,0 +1,10 @@
+.pure-g {
+    letter-spacing: inherit;
+}
+#main-container {
+    margin: 0 auto;
+    max-width:600px;
+}
+.item-input {
+    margin-right: 10px;
+}

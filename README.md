@@ -6,14 +6,14 @@ Flux, invented by Facebook, is an architecture pattern for building client-side 
 
 It is similar to MVC architecture, but Flux's concept is [much clearer](http://www.infoq.com/news/2014/05/facebook-mvc-flux) than MVC's, and easier to learn.
 
-![](img/banner.png)
+![](public/img/banner.png)
 
 ## How to Play?
 
 Install the demo.
 
 ```bash
-$ git clone git@github.com:ruanyf/extremely-simple-flux-demo.git
+$ git clone git@github.com:breezefeng/flux-demo.git
 $ cd extremely-simple-flux-demo && npm install
 $ npm start
 ```

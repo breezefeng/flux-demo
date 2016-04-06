@@ -14,7 +14,7 @@ Install the demo.
 
 ```bash
 $ git clone https://github.com/breezefeng/flux-demo.git
-$ cd extremely-simple-flux-demo && npm install
+$ cd flux-demo && npm install
 $ npm start
 ```
 

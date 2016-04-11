@@ -1,4 +1,5 @@
 var EventEmitter = require("events").EventEmitter;
+var AppDispatcher = require('../dispatcher/AppDispatcher');
 var assign = require('object-assign');
 var _ = require("underscore");
 
@@ -30,6 +31,26 @@ var keyStore = assign({}, EventEmitter.prototype, {
     removeChangeListener: function (callback) {
         //移除keyStore监听
         this.removeListener("change", callback)
+    }
+});
+
+/**
+ * 注册事件分发器
+ */
+AppDispatcher.register(function (event) {
+    switch (event.eventName) {
+
+        case 'new-item':
+            keyStore.addItem(event.item);
+            //触发Store change
+            keyStore.emitChange();
+            break;
+
+        case 'remove-item':
+            keyStore.removeItem(event.item);
+            //触发Store change
+            keyStore.emitChange();
+            break;
     }
 });
 

@@ -28,20 +28,24 @@ var App = React.createClass({
         });
     },
     createNewItems: function (e) {
-        this._sequenceID++;
-        var currentDom = ReactDOM.findDOMNode(this.refs.key);
-        var keyValue = currentDom.value;
-        if (keyValue == "") {
-            return;
+        if (e.key == 'Enter') {
+            e.preventDefault();
+            this._sequenceID++;
+            var currentDom = ReactDOM.findDOMNode(this.refs.key);
+            var keyValue = currentDom.value.trim();
+            if (keyValue == "") {
+                currentDom.value = "";
+                return;
+            }
+            currentDom.value = "";
+            /**
+             * 抛给事件分发器处理
+             */
+            AppAction.add({
+                key: keyValue,
+                id: this._sequenceID
+            })
         }
-        currentDom.value = "";
-        /**
-         * 抛给事件分发器处理
-         */
-        AppAction.add({
-            key: keyValue,
-            id: this._sequenceID
-        })
     },
     removeItems: function (id) {
         /**
@@ -69,8 +73,7 @@ var App = React.createClass({
                 <div>
                     <form className="pure-form">
                         <fieldset>
-                            <input type="text" className="item-input" ref="key"/>
-                            <a href="javascript:" className="pure-button" onClick={this.createNewItems}>添加</a>
+                            <input type="text" className="item-input" onKeyPress={this.createNewItems} ref="key"/>
                         </fieldset>
                     </form>
                 </div>
